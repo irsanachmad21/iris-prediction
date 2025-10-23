@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prediksi Bunga Iris</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #e6f0fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .wrapper {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+      }
+
+      .container {
+        background-color: white;
+        padding: 30px 40px;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        text-align: center;
+      }
+
+      h2 {
+        color: #3572ef;
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        text-align: left;
+        margin-top: 10px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+        background-color: #3572ef;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background-color: #2859b5;
+      }
+
+      .result-box {
+        background-color: white;
+        padding: 30px 40px;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        width: 300px;
+        text-align: left;
+      }
+
+      .result-box h3 {
+        color: #3572ef;
+        margin-bottom: 15px;
+      }
+
+      .result-box p {
+        margin: 5px 0;
+        font-weight: bold;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Form -->
+      <div class="container">
+        <form action="/predict" method="POST">
+          <h2>Prediksi Jenis Bunga Iris 🌸</h2>
+
+          <label>Sepal Length (cm):</label>
+          <input type="number" step="any" name="sepal_length" required />
+
+          <label>Sepal Width (cm):</label>
+          <input type="number" step="any" name="sepal_width" required />
+
+          <label>Petal Length (cm):</label>
+          <input type="number" step="any" name="petal_length" required />
+
+          <label>Petal Width (cm):</label>
+          <input type="number" step="any" name="petal_width" required />
+
+          <button type="submit">Generate</button>
+        </form>
+      </div>
+
+      <!-- Hasil Prediksi -->
+      {% if prediction_text %}
+      <div class="result-box">
+        <h3>Hasil Prediksi</h3>
+        <p>Sepal Length : {{ sepal_length }} cm</p>
+        <p>Sepal Width : {{ sepal_width }} cm</p>
+        <p>Petal Length : {{ petal_length }} cm</p>
+        <p>Petal Width : {{ petal_width }} cm</p>
+        <p>{{ prediction_text }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
